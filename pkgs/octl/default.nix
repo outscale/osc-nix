@@ -4,7 +4,6 @@
   fetchFromGitHub,
   installShellFiles,
   makeWrapper,
-  nix-update-script,
 }:
 buildGo126Module rec {
   pname = "octl";

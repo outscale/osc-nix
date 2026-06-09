@@ -8,13 +8,13 @@
 }:
 stdenv.mkDerivation rec {
   pname = "oapi-cli";
-  version = "0.12.0";
+  version = "0.15.0";
 
   src = fetchFromGitHub {
     owner = "outscale";
     repo = "oapi-cli";
     rev = "v${version}";
-    hash = "sha256-AUolCwnRdZzO8ZCeoi7CCQiJztD5vmQ1EcE5OYY6Rr4=";
+    hash = "sha256-5AJT6QqHxkBkyDlTcPXSCC8szRml7//PNiJ0ZBBqKF0=";
   };
 
   buildInputs = [json_c curl];
