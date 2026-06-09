@@ -1,0 +1,29 @@
+name: Plumber compliance
+
+on:
+  push:
+    branches: [main]
+  pull_request: null
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: read
+  security-events: write
+
+jobs:
+  plumber:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - uses: getplumber/plumber@4b94d4d02f970b40a699c839bbcaa04b62845a9a # v0.3.34
+        with:
+          threshold: 80
+          upload-sarif: ${{ github.event.repository.visibility == 'public' }}

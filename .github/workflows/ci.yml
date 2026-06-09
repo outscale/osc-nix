@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - uses: cachix/install-nix-action@616559265b40713947b9c190a8ff4b507b5df49b # v31.10.4
+        with:
+          extra_nix_config: |
+            allow-unfree = true
+
+      - name: Check flake
+        run: nix flake check -L
+
+      - name: Check formatting
+        run: nix fmt . -- --check
+
+      - name: Check flake-compat (non-flake users)
+        run: |
+          nix-build
+          nix eval -f shell.nix --apply 'x: x.default.name'
