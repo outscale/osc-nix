@@ -34,7 +34,6 @@
 
       packages = {
         terraform-provider-outscale = pkgs.terraform-providers.outscale_outscale;
-        oapi-cli = pkgs.oapi-cli;
         oks-cli = pkgs.oks-cli;
         octl = pkgs.octl;
       };
