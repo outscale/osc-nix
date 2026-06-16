@@ -7,13 +7,13 @@
 }:
 buildGo126Module rec {
   pname = "octl";
-  version = "0.0.25";
+  version = "0.0.26";
 
   src = fetchFromGitHub {
     owner = "outscale";
     repo = "octl";
     rev = "v${version}";
-    hash = "sha256-zTuCofVAdX83e1ngbzJLaqlhn//krIajljbn/0qzgcc=";
+    hash = "sha256-COcMRMGLyTQZmV0pAInUHipJgiyEGq/7bwHOL2wN2zc=";
   };
 
   vendorHash = "sha256-jy24WPA4dD+7uChtqebqpn5AkqSjBisHHT7i21n/86g=";
