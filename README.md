@@ -28,7 +28,6 @@
 **Outscale Tools for Nix** is a [Nix flake](https://nixos.wiki/wiki/Flakes) that provides Outscale CLI tools and the Terraform provider as Nix packages.
 
 Key features:
-- Pre-built packages for `octl`, `oks-cli`, `oapi-cli`, and `terraform-provider-outscale`
 - Overlay for seamless integration into your NixOS or home-manager configuration
 - Dev shell with Terraform (Outscale provider) and `octl` ready to use
 
@@ -38,9 +37,8 @@ Key features:
 
 | Package | Description |
 | ------- | ----------- |
-| `octl` | Experimental CLI for Outscale (OKS cluster management) |
+| `octl` | Modern CLI for Outscale |
 | `oks-cli` | Deploy and manage Kubernetes clusters on OUTSCALE |
-| `oapi-cli` | Low-level OUTSCALE API CLI |
 | `terraform-provider-outscale` | Terraform provider for managing OUTSCALE resources |
 
 ---
@@ -61,7 +59,7 @@ Key features:
 
 ```bash
 nix run github:outscale/osc-nix#octl -- iaas vm list
-nix run github:outscale/osc-nix#oapi-cli -- ReadAccounts
+nix run github:outscale/osc-nix#oks-cli -- project list
 ```
 
 #### Temporary shell
@@ -111,7 +109,7 @@ nix develop github:outscale/osc-nix
       overlays = [ outscale.overlays.outscale ];
     };
   in {
-    # pkgs.octl, pkgs.oks-cli, pkgs.oapi-cli, pkgs.terraform-providers.outscale_outscale
+    # pkgs.octl, pkgs.oks-cli, pkgs.terraform-providers.outscale_outscale
   };
 }
 ```

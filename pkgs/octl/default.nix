@@ -39,7 +39,7 @@ buildGo126Module rec {
   '';
 
   meta = {
-    description = "Experimental CLI for Outscale";
+    description = "Modern CLI for Outscale";
     homepage = "https://github.com/outscale/octl";
     changelog = "https://github.com/outscale/octl/blob/${src.rev}/CHANGELOG.md";
     license = lib.licenses.bsd3;
