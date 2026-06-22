@@ -5,14 +5,14 @@
 }:
 python3.pkgs.buildPythonApplication rec {
   pname = "oks-cli";
-  version = "1.21";
+  version = "1.22";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "outscale";
     repo = "oks-cli";
     rev = "v${version}";
-    hash = "sha256-ajT7PnaOD6X5gb9And+4+b+h0atnTOPeXMBC+3Dg39w=";
+    hash = "sha256-TgYcTPQvGAbJbDWvRLwO3blySYRlzGWl79T64RlklS0=";
   };
 
   build-system = [
