@@ -23,7 +23,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - uses: getplumber/plumber@4b94d4d02f970b40a699c839bbcaa04b62845a9a # v0.3.34
+      - uses: getplumber/plumber@a697e9c316b058d279861719c73b87093fb5a60f # v0.3.86
         with:
           threshold: 80
           upload-sarif: ${{ github.event.repository.visibility == 'public' }}
