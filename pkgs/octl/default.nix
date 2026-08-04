@@ -7,23 +7,23 @@
 }:
 buildGo126Module rec {
   pname = "octl";
-  version = "0.0.26";
+  version = "0.0.30";
 
   src = fetchFromGitHub {
     owner = "outscale";
     repo = "octl";
     rev = "v${version}";
-    hash = "sha256-COcMRMGLyTQZmV0pAInUHipJgiyEGq/7bwHOL2wN2zc=";
+    hash = "sha256-YSdn0wULGwv6jdThUa9q7uSLC59R8AAfZzB2QHNbA9U=";
   };
 
-  vendorHash = "sha256-jy24WPA4dD+7uChtqebqpn5AkqSjBisHHT7i21n/86g=";
+  vendorHash = "sha256-3U4zYxTF3UamE5pWR0cBkymIYX+r7HzxOnhx5dwcS1U=";
   doCheck = false;
 
   ldflags = [
     "-s"
     "-w"
     "-X=github.com/outscale/octl/pkg/version.Version=v${version}"
-    "-X=k8s.io/component-base/version.gitVersion=v1.35.3+octl"
+    "-X=k8s.io/component-base/version.gitVersion=v1.36.2+octl"
   ];
 
   nativeBuildInputs = [installShellFiles makeWrapper];
