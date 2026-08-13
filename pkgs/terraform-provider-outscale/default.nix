@@ -5,16 +5,16 @@
 }:
 buildGo126Module rec {
   pname = "terraform-provider-outscale";
-  version = "1.7.0";
+  version = "1.8.0";
 
   src = fetchFromGitHub {
     owner = "outscale";
     repo = "terraform-provider-outscale";
     rev = "v${version}";
-    hash = "sha256-zMr+lhJRnGwwAu5NnBiiOgKypxuT0VRyOUsph9z3cdI=";
+    hash = "sha256-3ug2hOYSBpxwGY2cRaDmwOKrtcqgvx5+hxTaqJJmvbg";
   };
 
-  vendorHash = "sha256-tBBWxwMgYf6et0e2DAkq47386SnWDIA2OZCtSaeoKAM=";
+  vendorHash = "sha256-RNSo5NIKdqIjsqe9U/TD+OD/GYixhhdXLPc5Z3z2JWQ";
 
   env.CGO_ENABLED = 0;
 
