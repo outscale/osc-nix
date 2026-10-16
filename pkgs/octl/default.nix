@@ -1,22 +1,22 @@
 {
   lib,
-  buildGo126Module,
+  buildGo127Module,
   fetchFromGitHub,
   installShellFiles,
   makeWrapper,
 }:
-buildGo126Module rec {
+buildGo127Module rec {
   pname = "octl";
-  version = "0.0.31";
+  version = "0.0.34";
 
   src = fetchFromGitHub {
     owner = "outscale";
     repo = "octl";
     rev = "v${version}";
-    hash = "sha256-ZXsQkbaKm2YQwDj3AeAez2UjwrlNSJoudBeSftI0maE=";
+    hash = "sha256-ecPlFsnWDBJuFUtdd7P9vdvphj8m+6mIo8mrmaMyVkU=";
   };
 
-  vendorHash = "sha256-Drmdk3s41UXd09s7EQr+5L1mZwwzhbPwBaGcNsqMDFI=";
+  vendorHash = "sha256-3jmFvRwZi2U9TUt6Cf0IRKcgbE2vyR4FS1IrUL/w1FY=";
   doCheck = false;
 
   ldflags = [
