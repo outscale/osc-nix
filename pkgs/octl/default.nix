@@ -7,17 +7,55 @@
 }:
 buildGo127Module rec {
   pname = "octl";
-  version = "0.0.34";
+  version = "0.0.36";
+
+  __structuredAttrs = true;
 
   src = fetchFromGitHub {
     owner = "outscale";
     repo = "octl";
     rev = "v${version}";
-    hash = "sha256-ecPlFsnWDBJuFUtdd7P9vdvphj8m+6mIo8mrmaMyVkU=";
+    hash = "sha256-hx5ZVx/6w7Vs6yO/F0PIxeNo+96APxbsYpKpwJWTMsQ=";
   };
 
-  vendorHash = "sha256-3jmFvRwZi2U9TUt6Cf0IRKcgbE2vyR4FS1IrUL/w1FY=";
-  doCheck = false;
+  vendorHash = "sha256-sPexXQp0iDXVHuFEYNRQCJl75+8ZppVWDXmGhe55F9M=";
+
+  checkFlags = let
+    # Tests that either network connection and/or OUTSCALE credentials
+    skipedTests = [
+      "TestIAASAPI"
+      "TestIAASAliases"
+      "TestIAASCRUD"
+      "TestBase64File"
+      "TestPolicyFile"
+      "TestPolicyString"
+      "TestIAASPipe"
+      "TestWaitFor"
+      "TestReadCatalog"
+      "TestReadConsumption"
+      "TestReadConsumptionAggregate"
+      "TestFilterNullValues"
+      "TestReverse"
+      "TestVolumeByDeviceName"
+      "TestSecurityGroupRules"
+      "TestKube"
+      "TestMetadata"
+      "TestProfilePriority"
+      "TestStorageCRUD"
+      "TestObjectDownload"
+      "TestBucketVersioning"
+      "TestBucketEncryption"
+      "TestBucketCORS"
+      "TestBucketPolicy"
+      "TestBucketWebsite"
+      "TestBucketLifecycle"
+      "TestBucketACL"
+      "TestObjectACL"
+      "TestObjectTagging"
+      "TestPresign"
+      "TestUpdateRealReleaseMutation"
+    ];
+  in ["-skip=^${builtins.concatStringsSep "$|^" skipedTests}$"];
 
   ldflags = [
     "-s"
